@@ -1,1 +1,45 @@
-
+int p=0;
+long duration;
+int distance;
+int s;
+void setup()
+{
+  pinMode(13,OUTPUT);
+  pinMode(2,INPUT);
+  pinMode(9,OUTPUT);
+  pinMode(10,INPUT);
+  pinMode(11,OUTPUT);
+  pinMode(4,OUTPUT);
+}
+void loop()
+{
+ p=digitalRead(2);
+  if (p==1)
+  {
+    digitalWrite(13,HIGH);
+  }
+  else
+  {
+    digitalWrite(13,LOW);
+  }
+  delay(10);
+  
+  digitalWrite(9,LOW);
+  delayMicroseconds(2);
+  digitalWrite(9,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(9,LOW);
+  duration=(10,HIGH);
+  distance=duration*0.034/2;
+  s=distance;
+  if(s<=5)
+  {
+    tone(11,1000,500);
+    digitalWrite(4,HIGH);
+  }
+  else
+  {
+    digitalWrite(11,LOW);
+    digitalWrite(4,LOW);
+  }
+}
