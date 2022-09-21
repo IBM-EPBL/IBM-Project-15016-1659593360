@@ -1,1 +1,42 @@
+const int trigpin = 9;
+const int echopin = 10;
+const int buzzer = 11;
+const int ledpin = 13;
+int time;
+long duration;
+int distance;
+int safetyDistance;
 
+void setup(){
+Serial.begin (9600);  
+pinMode(trigpin, OUTPUT);
+pinMode(echopin, INPUT);  
+pinMode(buzzer,  OUTPUT);
+pinMode(ledpin,  OUTPUT);
+
+}
+
+void loop(){
+ digitalWrite(trigpin, HIGH);
+ delayMicroseconds(10);
+ digitalWrite(trigpin, LOW);
+     
+ duration = pulseIn(echopin, HIGH);
+    
+ distance= duration*0.034/2;
+    
+ safetyDistance = distance;
+ if (safetyDistance <=5){
+   Serial.println (" Door Open ");
+   Serial.print (" Distance ");
+   Serial.println(distance);
+   digitalWrite(buzzer, HIGH);
+   digitalWrite(ledpin, HIGH);
+   delay (500);
+ }
+    else{
+      Serial.println(distance);
+      digitalWrite(buzzer, LOW);
+      digitalWrite(ledpin, LOW);
+    }
+  }
