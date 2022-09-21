@@ -1,1 +1,27 @@
+void setup()
+{
+  pinMode(12, OUTPUT);
+  pinMode(4,INPUT);
+  pinMode(7, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int p = digitalRead(4);
+  Serial.print(p);
+  Serial.print("\n");
+  
+  if(p){
+    Serial.print("Motion Detected !!! \n");
+    tone(12,(p*2000));
+    digitalWrite(7, HIGH);
+    delay(1000);
+  }
+  else{
+    noTone(12);
+    digitalWrite(7, LOW);
+    delay(1000);
+  }
+}
 
